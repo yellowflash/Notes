@@ -1,0 +1,220 @@
+\documentclass[twosides, openany]{tufte-book}
+\title{General topology}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Topological space}
+A topology is defined to be a set $X$ along with a set of subsets of $X$ called $T$ such that
+\begin{itemize}
+    \item $X \in T$ and $\emptyset \in T$
+    \item Union of arbitrary (finite or infinite) subcollection of $T$ is in $T$
+    \item Intersection of finite subcollection of $T$ is in $T$
+\end{itemize}
+
+Every set $O \in T$ is called as Open set.
+
+Thus the trivial topology on any set $X$ is $\{X, \emptyset \}$.
+
+The powerset $P(X)$ forms discrete topology.
+
+\section{Exercises}
+\begin{enumerate}
+    \item Find all the topologies of the set $\{a, b, c\}$
+    \item Suppose $T$ is a topology on set $X$ such that $O \in T$ if $O = X - U$ where $U$ is either finite or all of $X$ prove that $T$ is a topology. \marginnote{$T$ is called finite complement topology} 
+    \item In the topology $<X, T>$, a set $C$ is said to be closed, if $X -C$ is open. Then prove that, \marginnote{A set can be both closed, open or neither}
+        \begin{enumerate}
+            \item $X$ is closed
+            \item $\emptyset$ is closed
+            \item Arbitrary Intersection (finite/infinite) of closed sets is closed.
+            \item Finite unions of closed sets is closed
+        \end{enumerate}
+        \marginnote{A topology can also be specified uniquely by set of closed sets}
+    \item Construct a arbitrary topology and give example of a set which is closed, open, both open and closed and neither open nor closed.
+\end{enumerate}
+
+\chapter{Interiors and Closures}
+Given a topology $<X, T>$ and a set $A \subset X$ (not necessarily open/closed), then
+
+Interior of $A$, $Int(A)$ is defined as union of all open sets $O$ such that $O \subset A$.
+
+Closure of $A$, $\overline{A}$ is defined as Intersection of all closed sets $C$ such that $A \subset C$. \marginnote{Note that Interior is defined as unions of open sets and interiors as Intersection of closed sets either of them can be infinite sub-collection.}
+
+\section{Exercises}
+\begin{enumerate}
+    \item Given a topology $<x, T>$, $A \subset X$, $B \subset X$  then prove that
+    \begin{enumerate}
+        \item $Int(A)$ is a open set.
+        \item $\overline{A}$ is a closed set.
+        \item If $A$ is open iff $Int(A) = A$.
+        \item If $A$ is closed iff $\overline{A} = A$.
+        \item If $A \subset B$ then $Int(A) \subset Int(B)$
+        \item $Int(A \cap B) = Int(A) \cap Int(B)$
+        \item $Int(A) \cup Int(B) \subset Int(A \cup B)$
+        \item $A \subset B$ then $\overline{S} \subset \overline{T}$
+        \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$
+        \item $\overline{A \cap B} \subset (\overline{A} \cup \overline{B})$
+        \item $Int(X - A) = X - \overline{A}$
+        \item $Int(Int(A)) = Int(A)$
+        \item $\overline{\overline{A}} = \overline{A}$
+    \end{enumerate}
+\end{enumerate}
+
+\chapter{More on interiors and closures}
+
+Given a topology $<X, T>$ and a set $A \subset X$ and $x \in x$ then 
+$x \in \overline{A}$ iff every open set $O$ such that $x \in O$ intersects with $A$ \marginnote{Set $A$ and $B$ intersects if $A \cap B \neq \emptyset$}
+
+Intuitively if $x \in \overline{A}$ then $x$ should be in every closed set containing $A$. Then for every open set $O$ such that $x \in O$ either $A$ intersect $O$ (Which mean $(X - O) \not\subset A$) or ($x \notin \overline{A}$).
+
+A point $x$ is called limit point of a set $A \subset X$ in the given topology $<X, T>$ if for every open set $O \in T$ such that $x \in O$ then $(O \cup A) - {x} \neq \emptyset$. 
+\section{Exercises}
+\begin{enumerate}
+    \item Given a topology, $<X, T>$ and set $A \subset X$ is said to be dense if $\overline{A} = X$, then prove that.
+    $A$ is dense iff every $A$ intersects with every non empty open set.
+    \item Prove that $x$ is a limit point of $A$ iff $x \in \overline{A - \{x\}}$.
+    \item Prove that $A$ is closed iff $A$ contains all the limit points of $A$.
+    \item Prove that if $A'$ is set of all limit points of $A$ then $A \cup A'$ is closed. Also prove that $\overline{A} = A \cup A'$.
+\end{enumerate}
+
+\chapter{Neighborhood}
+Given a point $x \in X$ on the topology $<X, T>$ then the open set $N$ is in the Neighborhood of $x$ if $x \in N$. \marginnote{In some cases a subset $N$ is also considered the neighborhood if there is a open set $O$ such that $x \in O \subset N$}
+
+Neighborhood is also defined for $A \subset X$, a open set $N$ is in neighborhood of $O$ such $A \subset O$. 
+
+\section{Exercises}
+\begin{enumerate}
+\item Given a topology $<X, T>$ and $x \in X$ then prove that $N$ is in neighborhood of $x$ iff $x \in Int(N)$
+\end{enumerate}
+
+\chapter{Basis and subbasis}
+A set $B$ is said to be basis of the topology $<X, T>$ if 
+\begin{itemize}
+    \item for every $x \in X$ there is a $B_i \in B$ such that $x \in B_i$
+    \item if $x \in B_i$ and $x \in B_j$ for some $B_i \in B$ and $B_j \in B$ then there is a $B_k \in B$ such that $x \in B_k \subset (B_i \cup B_j)$ 
+\end{itemize} \marginnote{Unlike vector spaces basis is not unique.}
+
+A topology $T$ is induced by basis $B$ if for every open set $O$ and every $x \in O$ there is a $B_i \in B$ such that $x \in B_i$ and $B_i \subset O$.
+
+\section{Exercises}
+    \begin{enumerate}
+        \item Prove that the above construction of topology from basis is indeed a topology
+        \item Given a topology $<X, T>$ and basis $B$ then prove that
+        \begin{enumerate}
+            \item every $B_i \in B$ is open in $T$
+            \item $B$ induces $T$ iff arbitrary union of subcollection of $B$ is open.   
+        \end{enumerate}
+        \item A set $S$ is said to be a sub-basis which generates $<X, T>$ if for all $x \in X$ there is a $S_i \in S$ such that $x \in S_i$ and every open set is constructed from union of arbitrary or intersection of finite subcollection of $S$.
+        Prove that the sub-basis indeed induces unique topology. \marginnote{Every basis is a subbasis, proof?}
+        \item A topology on $<X, T>$ is said to be finer than $<X, T'>$ if $T' \subset T$ (Or $T'$ is coarser than $T$). 
+        Prove that If $B$ and $B'$ are the basis which induces $T$ and $T'$ then for every $x \in X$ and every $B_i' \in B'$ such that $x \in B_i'$ there is a $B_j \in B$ such that $x \in B_j \subset B_i'$ iff $T$ is finer than $T'$.
+    \end{enumerate}
+
+\chapter{Order topology}
+Given a totally ordered set $<O, \leq>$, the order topology induced by $leq$ is the topology induced by taking following sets as subbasis.
+\begin{itemize}
+    \item For every $a \in O$ $[m, a)$ where $m$ is minimal element.
+    \item For every $a \in O$ $(a, m]$ where $m$ is maximal element.
+\end{itemize} 
+
+The order topology induced by $<R, \leq>$ is called as the standard topology on $R$.
+
+\chapter{Product topology}
+
+Given two topologies $<X, T>$ and $<Y, T>$ if for every open $U$ in $T$ and $V$ in $T'$,  $U \times V$ as a basis, we get a topology.
+
+% Use subbasis formulation and also show that they give different topologies on on infinite products.
+
+\section{Exercise}
+\begin{enumerate}
+    \item Show with example that taking the $U \times V$ as open in product topology for every open $U$ and open $V$ does not form a topology.    
+    \item Prove that every open interval $(a,b)$ is open in $O$ and every closed interval $[a,b]$ is closed in $O$ \marginnote{This is the reason for the naming of open interval/closed intercal I suppose.}
+\end{enumerate}
+
+\chapter{Hausdorff space}
+Look at this later.
+
+\chapter{Subspaces}
+If $<X, T>$ is a topology and $S \subset X$ then the $O$ is open in the subspace topology on $S$ iff $O = N \cup O$ for some $N$ open in $O$.
+
+\section{Exercises}
+\begin{enumerate}
+    \item Prove that the above construction indeed forms a topology.
+    \item If $B$ is a basis of $<X,T>$, prove that the subspace topology on $S$ is also induced by taking $B_i \cup S$ for every $B_i \in B$ as basis.
+\end{enumerate}
+
+\chapter{Continuity}
+A function $f$ from a topology $<X, T>$ to $<Y, T'>$ if for every open set $O$ in $T'$ the inverse image $f^{-1}(O)$ is open in $T$. \marginnote{Inverse image of $X$ on $f$ is defined as $\{x | f(x) \in X \}$}
+
+$f$ is continuos at point $x$ if inverse image of every openset in the neighborhood of $f(x)$ is open in $T$.
+\section{Exercises}
+    \begin{enumerate}
+        \item Prove that identity function is continuos.
+        \item Prove that constant function is continuos. \marginnote{$f(x) = k$ for some $k$ in codomain.}
+        \item Prove that composition of continuos functions is continuos.
+        \item Given a function $f$ from $<X, T>$ to $<Y, T'>$ and $B$ is a basis that induces $X$ then prove that its necessary and sufficient that inverse image of every $B_i \in B$ is open in $T$.
+        \item Prove that $f$ is continuos iff $f$ is continuos at every point $x \in X$.
+    \end{enumerate}
+
+\chapter{Homeomorphisms}
+A bijective function $f$ is homeomorphic if both $f$ and $f^{-1}$ are continuos \marginnote{Bijective = One to One and Onto, Every bijective function is invertible. $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$}
+
+Two toplogies $<X, T>$ and $<Y, T'>$ are said to be homeomorphic if there is a Homeomorphism between them.
+\section{Exercises}
+    \begin{enumerate}
+        \item A function $f$ is said to be open map if for every open set $O$ in domain $f(O)$ is open in codomain. \marginnote{$f(X) = \{f(x) | x \in X\}$}, Prove that
+        \begin{enumerate}
+            \item Every Homeomorphism is a open map.
+            \item Every invertible open map is a Homeomorphism.
+        \end{enumerate}
+
+        \item Prove that homeomorphic is a equivalence relation (Reflexive, Symmetric and Transitive). \marginnote{$R$ is equivalence relation on $X$ for all $x, y, z \in X$ $xRx$,  $xRy$ iff $yRx$ and if $xRy$ and $yRz$ then $xRz$}
+    \end{enumerate}
+
+\chapter{Metric spaces}
+A function $d : X \times X \rightarrow R$ is said to be metric on $d$ if
+\begin{itemize}
+    \item $d(x, y) > 0$ iff $x \neq y$ \marginnote{$d(x, y)$ is zero if $x = y$ and $> 0$ if $x \neq y$}
+    \item $d(x, y) = d(y,x)$
+    \item $d(x, z) \leq d(x, y) + d(y, z)$
+\end{itemize}
+
+A open ball of radius $r \in R$ around $x \in X$ with metric $d$ is $\{y | y \in X \land d(x, y) < r\}$.
+
+A metric topology is topology on $X$ with metric $d$ induced by taking the basis $B$ as, for every $x \in X$ and for every $r > 0$ open ball of radius $r$ around $x$ is in $B$. 
+\marginnote{The continuity of functions we define in calculus becomes obviously equivalent to the continuity of functions defined in topology if we take the real space as metric space.}
+
+\section{Exercises}
+
+\begin{enumerate}
+    \item Prove that euclidean distance on $R^2$ is a metric in $R^2$.
+    \item Prove that $d((x, y), (x', y')) = |x - x'| + |y - y'|$ is a metric in $R^2$.
+    \item Prove that metric topology induced by above two metrics forms the standard topology of $R^2$.
+\end{enumerate}
+
+\chapter{Compactness}
+\marginnote{A set of subsets of $X$ is said to cover $X$ if union of them is contains $X$.}
+A topological space $<X, T>$ is said to be compact if $E$ is family of open sets that covers X then there is finite family of open sets $F$ of $T$ such that $F \subset E$ and $F$ covers $X$. 
+\marginnote{This is exactly the same idea used in Compactness of propositional and first order formulae, which states that a set of propositional formulae is consistent iff every finite subset of it is consistent.}  
+
+A collection of subsets of $A$ has finite intersection property (FIP) if intersection of every finite subcollection of it is non empty.
+
+\chapter{Filters and Filter Bases}
+
+A non empty set $F \subset P(X)$ is a filter base of $X$ if 
+\begin{itemize}
+    \item $\emptyset \notin F$
+    \item For every $A, B \in F$ $A \cup B \in F$
+\end{itemize}
+
+$F$ is called filter if $F$ is a filter base and if $A \in F$, $A \subset B$ and $B \subset X$ then $B \in F$ \marginnote{This is exactly the proper filter on lattice formed on a set with set inclusion as ordering relation.}
+
+% Some more stuff about principal and ultra filter.
+\section{Exercises}
+\begin{enumerate}
+    \item Prove that intersection of finite sub collection of $F$ is non empty.
+    \item We can generate a filter $F$ from filter base $B$ on the set $X$ by taking all subset $O$ of $X$ such that $B_i \subset O$ for some $B_i \in B$. Prove that this indeed forms a filter.
+\end{enumerate}
+
+\end{document}
+   
